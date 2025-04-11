@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>English to Bottom Translator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,17 +19,20 @@
       width: 60%;
       margin: 10px 0;
     }
+    .box {
+      font-family: 'Roboto', sans-serif;
+    }
   </style>
 </head>
 <body>
 
   <h1>English to Bottom<br>Translator</h1>
 
-  <label for="textInput">Your text here:</label><br>
-  <input type="text" id="textInput" placeholder="Enter text here"><br>
+  <label for="textInput" class="box">Your text here:</label><br>
+  <input type="text" id="textInput" placeholder="Enter text here" class="box"><br>
 
-  <label for="textOutput">Result:</label><br>
-  <input type="text" id="textOutput" readonly><br>
+  <label for="textOutput" class="box">Result:</label><br>
+  <input type="text" id="textOutput" readonly class="box"><br>
 
   <button onclick="convertText()">Convert</button>
 
@@ -65,6 +69,15 @@ function convertText() {
 function randomChoice(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("textInput");
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        convertText();
+      }
+    });
+  });
   </script>
 
 </body>

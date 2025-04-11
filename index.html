@@ -33,36 +33,38 @@
   <button onclick="convertText()">Convert</button>
 
   <script>
-    function convertText() {
-      const text = document.getElementById('textInput').value;
-      const words = text.split(' ');
-      const convertedWords = [];
+function convertText() {
+  const text = document.getElementById('textInput').value.trim();
+  const words = text.split(/\s+/);
+  const convertedWords = [];
 
-      words.forEach(word => {
-        let newWord = word;
+  words.forEach(word => {
+    let newWord = word;
 
-        if (Math.random() < 0.5) {
-          newWord = `${word[0]}-${word.toLowerCase()}`;
-        }
-
-        if (Math.random() < 0.33) {
-          newWord += randomChoice(["...", ".."]);
-        }
-
-        if (Math.random() < 0.33) {
-          newWord += randomChoice(["~", "~~"]);
-        }
-
-        convertedWords.push(newWord);
-      });
-
-      document.getElementById('textOutput').value = convertedWords.join(' ');
-      console.log(words, text, convertedWords);
+    // Get first character safely
+    const characters = Array.from(word); // Unicode-safe split
+    if (characters.length > 0 && Math.random() < 0.9) {
+      const firstChar = characters[0];
+      newWord = `${firstChar}-${word.toLocaleLowerCase('ru-RU')}`; // Better for Russian
     }
 
-    function randomChoice(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
+    if (Math.random() < 0.7) {
+      newWord += randomChoice(["...", ".."]);
     }
+
+    if (Math.random() < 0.6) {
+      newWord += randomChoice(["~", "~~"]);
+    }
+
+    convertedWords.push(newWord);
+  });
+
+  document.getElementById('textOutput').value = convertedWords.join(' ');
+}
+
+function randomChoice(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
   </script>
 
 </body>

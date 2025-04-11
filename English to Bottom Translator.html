@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>English to Bottom Translator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    input, button {
+      font-size: 18px;
+      padding: 10px;
+      width: 60%;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>English to Bottom<br>Translator</h1>
+
+  <label for="textInput">Your text here:</label><br>
+  <input type="text" id="textInput" placeholder="Enter text here"><br>
+
+  <label for="textOutput">Result:</label><br>
+  <input type="text" id="textOutput" readonly><br>
+
+  <button onclick="convertText()">Convert</button>
+
+  <script>
+    function convertText() {
+      const text = document.getElementById('textInput').value;
+      const words = text.split(' ');
+      const convertedWords = [];
+
+      words.forEach(word => {
+        let newWord = word;
+
+        if (Math.random() < 0.5) {
+          newWord = `${word[0]}-${word.toLowerCase()}`;
+        }
+
+        if (Math.random() < 0.33) {
+          newWord += randomChoice(["...", ".."]);
+        }
+
+        if (Math.random() < 0.33) {
+          newWord += randomChoice(["~", "~~"]);
+        }
+
+        convertedWords.push(newWord);
+      });
+
+      document.getElementById('textOutput').value = convertedWords.join(' ');
+      console.log(words, text, convertedWords);
+    }
+
+    function randomChoice(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+  .box {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  input, button {
+    font-size: 18px;
+    padding: 10px;
+    width: 60%;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  .clipboard {
+    background-color: blue;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .clipboard:hover {
+    background-color: rgb(0, 0, 225);
+  }
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .notification.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  @media (max-width: 600px) {
+    input, button {
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+  }
